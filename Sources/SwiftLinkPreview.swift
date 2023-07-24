@@ -642,7 +642,9 @@ extension SwiftLinkPreview {
                 let values = Regex.pregMatchAll(htmlCode, regex: Regex.secondaryImageTagPattern, index: 2)
                 if !values.isEmpty {
                     result.images = values
-                    result.image = values.first
+                    if result.image != nil {
+                        result.image = values.first
+                    }
                 }
                 else{
                     result.images = [self.addImagePrefixIfNeeded(mainImage ?? String(), result: result)]
